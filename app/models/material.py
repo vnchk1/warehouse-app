@@ -3,6 +3,7 @@ from sqlalchemy import String, Text, DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.models.base import Base
 
+
 class Material(Base):
     __tablename__ = "materials"
 

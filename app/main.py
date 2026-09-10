@@ -13,10 +13,12 @@ app.include_router(suppliers.router, prefix="/api/suppliers", tags=["Suppliers"]
 app.include_router(receipts.router, prefix="/api/receipts", tags=["Receipts"])
 app.include_router(reports.router, prefix="/api/reports", tags=["Reports"])
 
+
 # 3. Служебный адрес проверки работоспособности (Пункт 6)
 @app.get("/health", tags=["System"])
 def health_check():
     return {"status": "ok"}
+
 
 # 4. Глобальный обработчик ошибок уникальности (Пункт 6)
 @app.exception_handler(IntegrityError)

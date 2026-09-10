@@ -3,10 +3,13 @@ from sqlalchemy import String, DateTime, CheckConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.models.base import Base
 
+
 class Supplier(Base):
     __tablename__ = "suppliers"
     __table_args__ = (
-        CheckConstraint("length(inn) = 10 OR length(inn) = 12", name="check_inn_length"),
+        CheckConstraint(
+            "length(inn) = 10 OR length(inn) = 12", name="check_inn_length"
+        ),
         CheckConstraint("inn ~ '^[0-9]+$'", name="check_inn_digits"),
     )
 
