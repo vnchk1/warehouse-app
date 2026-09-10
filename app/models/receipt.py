@@ -1,7 +1,8 @@
 from datetime import datetime, date
-from sqlalchemy import String, Integer, Numeric, Date, DateTime, ForeignKey, CheckConstraint, func
+from sqlalchemy import String, Numeric, Date, DateTime, ForeignKey, CheckConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.models.base import Base
+
 
 class Receipt(Base):
     __tablename__ = "receipts"

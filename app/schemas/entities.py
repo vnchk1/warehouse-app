@@ -2,15 +2,21 @@ from datetime import datetime, date
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 import re
 
+
 # --- Units ---
 class UnitBase(BaseModel):
     name: str = Field(..., max_length=20)
 
-class UnitCreate(UnitBase): pass
+
+class UnitCreate(UnitBase):
+    pass
+
+
 class UnitRead(UnitBase):
     model_config = ConfigDict(from_attributes=True)
     id: int
     created_at: datetime
+
 
 # --- Materials ---
 class MaterialBase(BaseModel):
@@ -19,11 +25,16 @@ class MaterialBase(BaseModel):
     unit_id: int
     description: str | None = None
 
-class MaterialCreate(MaterialBase): pass
+
+class MaterialCreate(MaterialBase):
+    pass
+
+
 class MaterialRead(MaterialBase):
     model_config = ConfigDict(from_attributes=True)
     id: int
     created_at: datetime
+
 
 # --- Suppliers ---
 class SupplierBase(BaseModel):
@@ -36,16 +47,21 @@ class SupplierBase(BaseModel):
     @classmethod
     def validate_inn(cls, v: str) -> str:
         if not re.match(r"^\d+$", v):
-            raise ValueError("ИНН должен состоять только из цифр")
+            raise ValueError("INN must contain only digits")
         if len(v) not in (10, 12):
-            raise ValueError("Длина ИНН должна быть 10 или 12 символов")
+            raise ValueError("INN length must be 10 or 12 characters")
         return v
 
-class SupplierCreate(SupplierBase): pass
+
+class SupplierCreate(SupplierBase):
+    pass
+
+
 class SupplierRead(SupplierBase):
     model_config = ConfigDict(from_attributes=True)
     id: int
     created_at: datetime
+
 
 # --- Receipts ---
 class ReceiptBase(BaseModel):
@@ -55,7 +71,11 @@ class ReceiptBase(BaseModel):
     quantity: float = Field(..., gt=0)
     received_at: date | None = None
 
-class ReceiptCreate(ReceiptBase): pass
+
+class ReceiptCreate(ReceiptBase):
+    pass
+
+
 class ReceiptRead(ReceiptBase):
     model_config = ConfigDict(from_attributes=True)
     id: int
