@@ -17,6 +17,7 @@ Python 3.12, FastAPI, SQLAlchemy 2.0, Alembic, PostgreSQL 16, Pydantic.
 | `GET` | `/api/suppliers/` | Список поставщиков |
 | `POST` | `/api/receipts/` | Оформить поступление |
 | `GET` | `/api/receipts/` | Список поступлений (фильтры: `?material_id=&supplier_id=`) |
+| `GET` | `/api/reports/summary` | Сводный отчёт по количеству поступлений |
 
 ## Схема данных
 - `units` (Единицы измерения): `id`, `name` (unique), `created_at`
